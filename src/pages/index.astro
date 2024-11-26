@@ -5,27 +5,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Uncoolify</title>
+    <title>Coolify</title>
   </head>
   <body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center h-screen p-4">
-    <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
-      <h1 class="text-3xl font-bold text-center mb-6">Uncoolify</h1>
+    
+    <!-- Main Container -->
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-lg w-full">
+
+      <!-- Title Section -->
+      <h1 class="text-4xl font-bold text-center mb-6 text-blue-600">Coolify</h1>
+
+      <!-- Input Form -->
       <form class="flex flex-col space-y-4">
         <textarea
           id="textInput"
           placeholder="Enter your text here..."
-          rows="5"
-          class="border border-gray-300 p-2 rounded-md w-full resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+          rows="6"
+          class="border border-gray-300 p-3 rounded-md w-full resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
         ></textarea>
+
+        <!-- Uncool Button -->
         <button
           id="uncoolButton"
           type="button"
-          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+          class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Make it UNCOOL
         </button>
       </form>
-      <p id="outputText" class="mt-4 bg-gray-100 p-3 rounded-md"></p>
+
+      <!-- Output Section -->
+      <p id="outputText" class="mt-6 bg-gray-100 p-4 rounded-md text-gray-700"></p>
+
+    </div>
+
+    <!-- Inspired by Video Section with Thumbnail -->
+    <div class="mt-8 text-center">
+      <p class="text-lg text-gray-600">
+        Inspired by 
+        <a href="https://www.youtube.com/watch?v=q1SWw7i9LQc" class="text-blue-600 hover:underline" target="_blank">this video</a>.
+      </p>
+      <!-- Video Thumbnail -->
+      <a href="https://www.youtube.com/watch?v=q1SWw7i9LQc" target="_blank">
+        <img src="https://img.youtube.com/vi/q1SWw7i9LQc/hqdefault.jpg" alt="YouTube Video Thumbnail" class="mt-4 rounded-lg shadow-lg hover:scale-105 transition duration-300" />
+      </a>
     </div>
   </body>
 </html>
