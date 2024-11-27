@@ -6,49 +6,133 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coolify</title>
-  </head>
-  <body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center h-screen p-4">
-    
-    <!-- Main Container -->
-    <div class="bg-white p-8 rounded-xl shadow-lg max-w-lg w-full">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
 
+      .gradient-bg {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        animation: gradient-animation 5s infinite alternate;
+      }
+
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .glass-card {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      }
+
+      input[type='range']::-webkit-slider-thumb {
+        background-color: #3b82f6;
+        border: none;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      input[type='range']::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <!-- Main Container -->
+    <div class="glass-card p-8 rounded-xl shadow-lg max-w-lg w-full text-white text-center">
       <!-- Title Section -->
-      <h1 class="text-4xl font-bold text-center mb-6 text-blue-600">Coolify</h1>
+      <h1 class="text-5xl font-bold mb-6">Coolify ✨</h1>
+
+      <p class="text-lg mb-6">
+        We take your AI generated text and make it worse! 🤪
+      </p>
+
+      <!-- Preset Dropdown -->
+      <div class="mb-6">
+        <label for="presetDropdown" class="block text-lg font-medium mb-2">Select Preset:</label>
+        <select
+          id="presetDropdown"
+          class="border border-white/20 p-3 rounded-lg w-full bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300"
+        >
+          <option class="text-black" value="default">Default</option>
+          <option class="text-black" value="light">Light</option>
+          <option class="text-black" value="heavy">Heavy</option>
+        </select>
+      </div>
+
+      <!-- Amount Slider -->
+      <div class="mb-6">
+        <label for="amountSlider" class="block text-lg font-medium mb-2">Amount:</label>
+        <input
+          type="range"
+          id="amountSlider"
+          min="1"
+          max="10"
+          value="5"
+          class="w-full"
+        />
+        <div class="flex justify-between text-sm mt-2 text-gray-200">
+          <span>1</span>
+          <span>10</span>
+        </div>
+      </div>
 
       <!-- Input Form -->
       <form class="flex flex-col space-y-4">
         <textarea
           id="textInput"
-          placeholder="Enter your text here..."
-          rows="6"
-          class="border border-gray-300 p-3 rounded-md w-full resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+          placeholder="The quick brown fox jumps over the lazy dog..."
+          rows="5"
+          class="border border-white/20 p-4 rounded-lg w-full bg-white/10 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300 resize-none"
         ></textarea>
 
         <!-- Uncool Button -->
         <button
           id="uncoolButton"
           type="button"
-          class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition duration-300"
+          class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 hover:shadow-lg transition duration-300 font-semibold"
         >
-          Make it UNCOOL
+          Make it <b>COOL</b> 🔥
         </button>
       </form>
 
       <!-- Output Section -->
-      <p id="outputText" class="mt-6 bg-gray-100 p-4 rounded-md text-gray-700"></p>
+      <p
+        id="outputText"
+        class="mt-6 bg-white/10 p-4 rounded-lg text-gray-100 text-left whitespace-pre-wrap"
+      ></p>
 
-    </div>
+      <!-- Copy Button -->
+      <button
+        id="copyButton"
+        type="button"
+        class="bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 hover:shadow-lg transition duration-300 mt-4 font-semibold"
+      >
+        Copy to Clipboard
+      </button>
 
-    <!-- Inspired by Video Section with Thumbnail -->
-    <div class="mt-8 text-center">
-      <p class="text-lg text-gray-600">
-        Inspired by 
-        <a href="https://www.youtube.com/watch?v=q1SWw7i9LQc" class="text-blue-600 hover:underline" target="_blank">this video</a>.
+      <p class="mt-8 text-lg">
+        Inspired by
+        <a
+          href="https://www.youtube.com/watch?v=q1SWw7i9LQc"
+          class="text-blue-300 hover:underline"
+          target="_blank"
+        >
+          this video
+        </a>.
       </p>
-      <!-- Video Thumbnail -->
-      <a href="https://www.youtube.com/watch?v=q1SWw7i9LQc" target="_blank">
-        <img src="https://img.youtube.com/vi/q1SWw7i9LQc/hqdefault.jpg" alt="YouTube Video Thumbnail" class="mt-4 rounded-lg shadow-lg hover:scale-105 transition duration-300" />
-      </a>
     </div>
   </body>
 </html>
@@ -73,7 +157,7 @@
     }
   }
 
-  function makeTextUncool(text) {
+  function makeTextUncool(preset, amount, text) {
     const words = text.match(/(\w+|[^\w\s]+|\s+)/g) || [];
 
     return words
@@ -84,10 +168,12 @@
 
         const lowerWord = word.toLowerCase();
 
-        if (typoMap[word] && Math.random() > 0.7) {
+        const probability = 0.3 + Math.pow(1 - 0.1, amount);
+
+        if (typoMap[word] && Math.random() < probability) {
           const typos = typoMap[word];
           return typos[Math.floor(Math.random() * typos.length)];
-        } else if (typoMap[lowerWord] && Math.random() > 0.7) {
+        } else if (typoMap[lowerWord] && Math.random() < probability) {
           const typos = typoMap[lowerWord];
           return typos[Math.floor(Math.random() * typos.length)];
         }
@@ -107,7 +193,13 @@
         const textInput = document.getElementById('textInput');
         if (!textInput) return;
 
-        const uncoolText = makeTextUncool(textInput.value);
+        const presetDropdown = document.getElementById('presetDropdown');
+        const preset = presetDropdown.value;
+
+        const amountSlider = document.getElementById('amountSlider');
+        const amount = parseInt(amountSlider.value);
+
+        const uncoolText = makeTextUncool(preset, amount, textInput.value);
 
         const textOutput = document.getElementById('outputText');
         if (!textOutput) return;
